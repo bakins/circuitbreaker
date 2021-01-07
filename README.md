@@ -1,6 +1,6 @@
 # circuit breaker in go
 
-![Go Reference](https://pkg.go.dev/badge/github.com/bakins/circuitbreaker.svg)](https://pkg.go.dev/github.com/bakins/circuitbreaker)
+[![Go Reference](https://pkg.go.dev/badge/github.com/bakins/circuitbreaker.svg)](https://pkg.go.dev/github.com/bakins/circuitbreaker)
 ![Build Status](https://github.com/bakins/circuitbreaker/workflows/breaker/badge.svg)
 
 [Circuit Breaker](https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern) in go that uses rolling time windows.
