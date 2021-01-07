@@ -96,7 +96,7 @@ func TestHalfOpen(t *testing.T) {
 	cb, err = b.Allow()
 	require.NoError(t, err)
 	require.Equal(t, StateHalfOpen, b.State())
-	require.Nil(t, cb)
+	require.NotEmpty(t, cb)
 
 	cb, err = b.Allow()
 	require.Equal(t, ErrTooManyRequests, err)
@@ -110,7 +110,7 @@ func TestHalfOpen(t *testing.T) {
 
 	cb, err = b.Allow()
 	require.NoError(t, err)
-	require.Nil(t, cb)
+	require.NotEmpty(t, cb)
 
 	require.Equal(t, StateHalfOpen, b.State())
 
