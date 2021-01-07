@@ -20,6 +20,7 @@ var (
 // State of a Breaker.
 type State int
 
+// Breaker states
 const (
 	StateClosed State = iota
 	StateHalfOpen
@@ -117,6 +118,7 @@ func WithOnStateChange(onStateChange OnStateChange) Option {
 	}
 }
 
+// Breaker is a circuit breaker that uses rolling time windows.
 type Breaker struct {
 	lock                 sync.Mutex
 	options              Options

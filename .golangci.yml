@@ -1,0 +1,28 @@
+run:
+  tests: true
+linters:
+  disable-all: true
+  enable:
+  - deadcode
+  - errcheck
+  - goconst
+  - goimports
+  - golint
+  - gosec
+  - gosimple
+  - govet
+  - ineffassign
+  - maligned
+  - nakedret
+  - prealloc
+  - staticcheck
+  - structcheck
+  - unused
+  - varcheck
+  - whitespace
+  - gofumpt
+linters-settings:
+  govet:
+    check-shadowing: true
+issues:
+  exclude-use-default: false
