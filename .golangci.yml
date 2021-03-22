@@ -6,6 +6,7 @@ linters:
   - deadcode
   - errcheck
   - goconst
+  - gofumpt
   - goimports
   - golint
   - gosec
@@ -20,7 +21,6 @@ linters:
   - unused
   - varcheck
   - whitespace
-  - gofumpt
 linters-settings:
   govet:
     check-shadowing: true
