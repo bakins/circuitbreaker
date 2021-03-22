@@ -49,11 +49,11 @@ type OnStateChange func(from State, to State)
 
 // Options configure the Breaker.
 type Options struct {
-	maxRequests   uint64
-	window        time.Duration
-	timeout       time.Duration
 	readyToTrip   ReadyToTrip
 	onStateChange OnStateChange
+	window        time.Duration
+	timeout       time.Duration
+	maxRequests   uint64
 }
 
 // Option sets Breaker options
@@ -120,15 +120,15 @@ func WithOnStateChange(onStateChange OnStateChange) Option {
 
 // Breaker is a circuit breaker that uses rolling time windows.
 type Breaker struct {
-	lock                 sync.Mutex
-	options              Options
-	currentState         State
+	lastStateChange      time.Time
 	requests             *timePolicy
 	totalSuccesses       *timePolicy
 	totalFailures        *timePolicy
+	options              Options
+	currentState         State
 	consecutiveSuccesses uint64
 	consecutiveFailures  uint64
-	lastStateChange      time.Time
+	lock                 sync.Mutex
 }
 
 // New creates a Breaker
@@ -286,8 +286,8 @@ func (b *Breaker) onFailure() {
 }
 
 type timePolicy struct {
-	lock   sync.Mutex
 	policy *rolling.TimePolicy
+	lock   sync.Mutex
 }
 
 func newTimePolicy(window rolling.Window, bucketDuration time.Duration) *timePolicy {
